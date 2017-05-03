@@ -1,0 +1,48 @@
+{
+  "name": "vuec",
+  "version": "0.0.0",
+  "author": "katashin",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "bin": "lib/cli/main.js",
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/ktsn/vuec",
+  "bugs": "https://github.com/ktsn/vuec/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ktsn/vuec.git"
+  },
+  "scripts": {
+    "prepublish": "npm run clean && npm run test && npm run build",
+    "clean": "rm -rf lib",
+    "build": "tsc -p src",
+    "dev": "npm run build -- -w",
+    "dev:test": "npm run test:unit -- -w",
+    "lint": "tslint \"src/**/*.ts\" && tslint \"test/**/*.ts\"",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "mocha --compilers ts:espower-typescript/guess --recursive test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^7.0.15",
+    "@types/power-assert": "1.4.29",
+    "espower-typescript": "^8.0.0",
+    "mocha": "^3.2.0",
+    "power-assert": "^1.4.2",
+    "tslint": "^4.4.2",
+    "tslint-config-ktsn": "^2.0.1",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "hash-sum": "^1.0.2",
+    "minimist": "^1.2.0",
+    "postcss": "^5.2.17",
+    "postcss-selector-parser": "^2.2.3",
+    "vue-template-compiler": "^2.3.2",
+    "vue-template-es2015-compiler": "^1.5.2"
+  }
+}
