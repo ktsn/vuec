@@ -2,17 +2,17 @@ import { readFileSync } from 'fs'
 import * as postcss from 'postcss'
 import { SFC } from './sfc/sfc'
 import { Either, value } from './util/either'
-import { split as splitSFC } from './splitter'
+import { split as splitSFC } from './sfc/splitter'
 import { compile as compileTemplate } from './template/compiler'
 import { postcssPlugin as addScopeId } from './style/scope-id'
 import { genScopeId } from './gen-scope-id'
 
 export function run(fileNames: string[]): void {
-  Promise.all(fileNames.map(process))
+  Promise.all(fileNames.map(transform))
     .then(a => a.forEach(b => console.log(b)))
 }
 
-async function process(fileName: string): Promise<SFC> {
+async function transform(fileName: string): Promise<SFC> {
   const source = readFileSync(fileName, 'utf8')
   const sfc = splitSFC(fileName, source)
   const scopeId = genScopeId(fileName)

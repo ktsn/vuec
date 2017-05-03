@@ -1,5 +1,5 @@
 import { parseComponent } from 'vue-template-compiler'
-import { SFC, SFCBlock, TemplateBlock, StyleBlock } from './sfc/sfc'
+import { SFC, SFCBlock, TemplateBlock, StyleBlock } from './sfc'
 
 export function split(fileName: string, code: string): SFC {
   const result = parseComponent(code)

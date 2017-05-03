@@ -1,5 +1,5 @@
 import * as assert from 'power-assert'
-import { split } from '../src/splitter'
+import { split } from '../../src/sfc/splitter'
 
 describe('Splitter', () => {
   it('should split sfc', () => {
