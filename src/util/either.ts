@@ -1,4 +1,5 @@
 export interface Either<E, T> {
+  get(): T
   map<R>(fn: (value: T) => R): Either<E, R>
   flatMap<R>(fn: (value: T) => Either<E, R>): Either<E, R>
   forEach(fn: (value: T) => void): void
@@ -18,27 +19,34 @@ class EitherImpl implements Either<{}, {}> {
     return this.error !== null
   }
 
-  map(fn: (value: {}) => {}): this {
+  get() {
+    if (this.value === null) {
+      throw this.error
+    }
+    return this.value
+  }
+
+  map(fn) {
     if (this.value !== null) {
       this.value = fn(this.value)
     }
     return this
   }
 
-  flatMap(fn: (value: {}) => Either<{}, {}>): Either<{}, {}> {
+  flatMap(fn) {
     if (this.value !== null) {
       return fn(this.value)
     }
     return this
   }
 
-  forEach(fn: (value: {}) => void): void {
+  forEach(fn) {
     if (this.value !== null) {
       fn(this.value)
     }
   }
 
-  fold(f: (value: {}) => {}, g: (error: {}) => {}): {} {
+  fold(f, g) {
     if (this.hasError) {
       return g(this.error!)
     } else {
