@@ -21,10 +21,10 @@
     "clean": "rm -rf lib",
     "build": "tsc -p src",
     "dev": "npm run build -- -w",
-    "dev:test": "npm run test:unit -- -w",
+    "dev:test": "npm run test:unit -- -R min -w",
     "lint": "tslint \"src/**/*.ts\" && tslint \"test/**/*.ts\"",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "mocha --compilers ts:espower-typescript/guess --recursive test"
+    "test:unit": "mocha --compilers ts:espower-typescript/guess -R dot --recursive test"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.39",
