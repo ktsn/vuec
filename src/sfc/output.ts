@@ -1,5 +1,6 @@
 import * as path from 'path'
 import { TemplateBlock, StyleBlock, SFCBlock } from './sfc'
+import { js_beautify as beautify } from 'js-beautify'
 
 export interface SFCOutput {
   fileName: string
@@ -23,10 +24,12 @@ export function template(sourceName: string, source: TemplateBlock): SFCOutput {
 }
 
 function exportRender(block: TemplateBlock): string {
-  return [
+  return beautify([
     'export var render = ' + wrapFunction(block.render!) + ';',
     'export var staticRenderFns = [' + block.staticRenderFns!.map(wrapFunction).join(',') + '];'
-  ].join('\n')
+  ].join('\n'), {
+    indent_size: 2
+  })
 }
 
 function wrapFunction(code: string): string {

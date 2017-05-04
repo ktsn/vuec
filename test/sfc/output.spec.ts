@@ -29,7 +29,11 @@ describe('SFC output', () => {
     assert.deepStrictEqual(res, {
       fileName: 'test.template.js',
       content: [
-        `export var render = function(){${render}};`,
+        'export var render = function() {',
+        '  with(this) {',
+        '    return _c(\'p\', [_v(\"Hello\")])',
+        '  }',
+        '};',
         'export var staticRenderFns = [];'
       ].join('\n')
     })
