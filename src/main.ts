@@ -3,6 +3,7 @@ import * as postcss from 'postcss'
 import { SFC } from './sfc/sfc'
 import { SFCOutput, template, script, style, reduce } from './sfc/output'
 import { split as splitSFC } from './sfc/splitter'
+import { create as createPreamble } from './sfc/preamble'
 import { Either, value } from './util/either'
 import { compile as compileTemplate } from './template/compiler'
 import { postcssPlugin as addScopeId } from './style/scope-id'
@@ -11,9 +12,13 @@ import { genScopeId } from './gen-scope-id'
 export function run(fileNames: string[]): void {
   Promise.all(fileNames.map(transform))
     .then(items => {
-      items.map(output).forEach(outputs => {
-        outputs.forEach(write)
-      })
+      items.map(createPreamble)
+        .forEach(write)
+
+      items.map(output)
+        .forEach(outputs => {
+          outputs.forEach(write)
+        })
     })
 }
 
