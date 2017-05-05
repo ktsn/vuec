@@ -40,7 +40,7 @@ export function script(sourceName: string, source: SFCBlock): SFCOutput {
   const p = path.parse(sourceName)
 
   return {
-    fileName: path.join(p.dir, p.name + '.' + source.lang),
+    fileName: path.join(p.dir, p.name + '.script.' + source.lang),
     content: source.code
   }
 }

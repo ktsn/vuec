@@ -46,7 +46,7 @@ describe('SFC output', () => {
     })
 
     assert.deepStrictEqual(res, {
-      fileName: 'test.js',
+      fileName: 'test.script.js',
       content: 'export default {}'
     })
   })
