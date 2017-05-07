@@ -33,7 +33,7 @@ export function create(sfc: SFC): SFCOutput {
   `
 
   return {
-    fileName: p.name + '.js',
+    fileName: path.join(p.dir, p.name + '.js'),
     content: buf
   }
 }
