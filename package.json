@@ -2,9 +2,14 @@
   "name": "vuec",
   "version": "0.0.0",
   "author": "katashin",
-  "private": true,
-  "description": "",
-  "keywords": [],
+  "description": "CLI compiler of Vue single file component",
+  "keywords": [
+    "Vue.js",
+    "compiler",
+    "CLI",
+    "component",
+    "single file component"
+  ],
   "license": "MIT",
   "bin": "lib/cli/main.js",
   "files": [
