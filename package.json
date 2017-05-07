@@ -27,6 +27,7 @@
     "test:unit": "mocha --compilers ts:espower-typescript/guess -R dot --recursive test"
   },
   "devDependencies": {
+    "@types/glob": "^5.0.30",
     "@types/mocha": "^2.2.39",
     "@types/node": "^7.0.15",
     "@types/power-assert": "1.4.29",
@@ -38,6 +39,7 @@
     "typescript": "^2.2.1"
   },
   "dependencies": {
+    "glob": "^7.1.1",
     "hash-sum": "^1.0.2",
     "js-beautify": "^1.6.12",
     "minimist": "^1.2.0",
